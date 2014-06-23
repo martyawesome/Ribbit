@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.martyawesome.ribbit.app">
+    package="com.martyawesome.ribbit.app" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name="com.martyawesome.ribbit.app.RibbitApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.martyawesome.ribbit.app.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,9 +37,21 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.martyawesome.ribbit.app.EditFriendsActivity"
-            android:parentActivityName="com.martyawesome.ribbit.app.MainActivity"
             android:label="@string/title_activity_edit_friends"
-            android:screenOrientation="portrait"></activity>
+            android:parentActivityName="com.martyawesome.ribbit.app.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.martyawesome.ribbit.app.RecipientsActivity"
+            android:label="@string/title_activity_recipients"
+            android:parentActivityName="com.martyawesome.ribbit.app.MainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.martyawesome.ribbit.app.ViewImageActivity"
+            android:label="@string/title_activity_view_image"
+            android:parentActivityName="com.martyawesome.ribbit.app.MainActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
