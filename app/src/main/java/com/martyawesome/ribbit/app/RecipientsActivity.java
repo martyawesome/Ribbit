@@ -2,7 +2,9 @@ package com.martyawesome.ribbit.app;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -36,6 +38,8 @@ public class RecipientsActivity extends ListActivity {
     protected ParseUser mCurrentUser;
     protected Uri mMediaUri;
     protected String mFileType;
+    //Handler mUpdateBarHandler;
+
 
     protected MenuItem mSendMenuItem;
 
@@ -45,6 +49,7 @@ public class RecipientsActivity extends ListActivity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_recipients);
 
+        //mUpdateBarHandler = new Handler();
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         mMediaUri = getIntent().getData();
         mFileType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
@@ -105,7 +110,7 @@ public class RecipientsActivity extends ListActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 // Handle action bar item clicks here. The action bar will
                 // automatically handle clicks on the Home/Up button, so long
@@ -115,19 +120,15 @@ public class RecipientsActivity extends ListActivity {
 
             case R.id.action_send:
                 ParseObject message = createMessage();
-                if(message == null){
+                if (message == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setMessage(R.string.error_selecting_file)
                             .setTitle(R.string.error_selecting_file_title)
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
-                }
-                else{
-                    send(message);
-                    Toast.makeText(RecipientsActivity.this, getString(R.string.success_message),
-                            Toast.LENGTH_LONG).show();
-                    finish();
+                } else {
+                    new RecipientsTask(message).execute();
                 }
                 return true;
         }
@@ -180,25 +181,78 @@ public class RecipientsActivity extends ListActivity {
         return recipientIds;
     }
 
-    protected void send(ParseObject message) {
-        message.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
+    /**
+     * Represents an asynchronous login/registration task used to authenticate
+     * the user.
+     */
+    public class RecipientsTask extends AsyncTask<Void, Integer, Boolean> {
+        private ProgressDialog mProgressDialog;
+        private final ParseObject mMessage;
+        private volatile boolean running = true;
+        private Boolean file_sent = false;
 
-                if (e == null) {
-                    //success
-                    Toast.makeText(RecipientsActivity.this, getString(R.string.success_message),Toast.LENGTH_LONG).show();
-                } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
-                    builder.setMessage(R.string.error_sending_message)
-                            .setTitle(R.string.error_selecting_file_title)
-                            .setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
+        RecipientsTask(ParseObject message) {
+            mMessage = message;
+        }
 
-                }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mProgressDialog = new ProgressDialog(RecipientsActivity.this);
+            mProgressDialog.setMessage(getString(R.string.sending_file));
+            mProgressDialog.setCancelable(false);
+            mProgressDialog.show();
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                // Simulate network access.
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                return file_sent;
             }
-        });
-    }
 
+            while (running) {
+                mMessage.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            file_sent = true;
+                        } else {
+                            file_sent = false;
+                        }
+                        running = false;
+                    }
+                });
+            }
+            return file_sent;
+        }
+
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mProgressDialog.dismiss();
+
+            if (file_sent) {
+                Toast.makeText(RecipientsActivity.this, getString(R.string.success_message),
+                        Toast.LENGTH_LONG).show();
+                finish();
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
+                builder.setMessage(R.string.error_sending_message)
+                        .setTitle(R.string.error_selecting_file_title)
+                        .setPositiveButton(android.R.string.ok, null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            running = false;
+        }
+
+
+    }
 }

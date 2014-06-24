@@ -2,34 +2,52 @@
 <pre-dex-items>
 
     <item
-        dex="B:\AndroidProjects\Ribbit\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-a1396bea8d6e270bca3c54498d333d4cac5227c2.jar"
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\activation-aa4eb8f7b110f8a413b4d7cb94618d1c9b6bfc43.jar"
+        jar="B:\AndroidProjects\Smarty\app\libs\activation.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="d1257cbff6faa44c1f325ae0d9413522d4644383"/>
+    <item
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\mail-1108b1a6f5c1d896394a65bee5cc288f60ee4e08.jar"
+        jar="B:\AndroidProjects\Smarty\app\libs\mail.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="428e267abff0d10802ccde86b915da2c20471160"/>
+    <item
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\classes-ba698f5bfa838f0cf2c5cbfc3a7cddbdacd49703.jar"
+        jar="B:\AndroidProjects\Smarty\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+    <item
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\commons-io-2.4-1bdd5ca9de3a81365aba09b4b1c1308367e103b2.jar"
+        jar="B:\AndroidProjects\Smarty\app\libs\commons-io-2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad"/>
+    <item
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-a1396bea8d6e270bca3c54498d333d4cac5227c2.jar"
         jar="B:\adt-bundle-windows-x86_64-20140321\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
     <item
-        dex="B:\AndroidProjects\Ribbit\app\build\intermediates\pre-dexed\debug\picasso-2.3.2-ae2472d8ce7793fbd51864032f83fc3fdf851fa0.jar"
-        jar="B:\AndroidProjects\Ribbit\app\libs\picasso-2.3.2.jar"
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\additionnal-ab7f03bd309b45a1405402b7071cbc443baea9f9.jar"
+        jar="B:\AndroidProjects\Smarty\app\libs\additionnal.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="bd9e8dc422bb8c8405359947fe9f4282b49f57f4"/>
+    <item
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\picasso-2.3.2-d17972648f2e4209acdcee72577cb798cbb3e0ac.jar"
+        jar="B:\AndroidProjects\Smarty\app\libs\picasso-2.3.2.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27"/>
     <item
-        dex="B:\AndroidProjects\Ribbit\app\build\intermediates\pre-dexed\debug\Parse-1.5.1-f13bc20b79ace2fb50c6b41bc5a16afa93b559e5.jar"
-        jar="B:\AndroidProjects\Ribbit\app\libs\Parse-1.5.1.jar"
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\Parse-1.5.1-985e10ad6e00b0620cd8e0eec4ae41759a431d3c.jar"
+        jar="B:\AndroidProjects\Smarty\app\libs\Parse-1.5.1.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
-    <item
-        dex="B:\AndroidProjects\Ribbit\app\build\intermediates\pre-dexed\debug\commons-io-2.4-a1e3baa2275f09da832d5ed8e94a8453643e50a5.jar"
-        jar="B:\AndroidProjects\Ribbit\app\libs\commons-io-2.4.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad"/>
-    <item
-        dex="B:\AndroidProjects\Ribbit\app\build\intermediates\pre-dexed\debug\support-v13-19.1.0-c5c35c3efb1dc4f508e221555dfdb49eb48346ea.jar"
-        jar="B:\adt-bundle-windows-x86_64-20140321\sdk\extras\android\m2repository\com\android\support\support-v13\19.1.0\support-v13-19.1.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="6b852a232f642c75a7fdfc7212b841b8c8f8959c"/>
 
 </pre-dex-items>

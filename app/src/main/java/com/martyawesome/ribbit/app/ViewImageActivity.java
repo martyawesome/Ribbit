@@ -41,7 +41,6 @@ public class ViewImageActivity extends Activity {
                     imageView.setRotation(270);
                     break;
                 default:
-                    imageView.setRotation(270);
                     break;
             }
         } catch (IOException e) {

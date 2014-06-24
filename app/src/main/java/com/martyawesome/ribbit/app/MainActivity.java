@@ -9,7 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v13.app.FragmentPagerAdapter;
+//import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -46,8 +46,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     protected Uri mMediaUri;
 
     public DialogInterface.OnClickListener mDialogListener;
-
-    {
+       {
         mDialogListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
