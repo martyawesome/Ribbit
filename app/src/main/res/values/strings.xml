@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">Smarty</string>
+    <string name="subtitle">File Exchanging System</string>
+
 
     <string name="title_activity_new_login">Sign in</string>
     <string name="prompt_email">Email</string>
@@ -21,8 +23,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="username_hint">Username</string>
     <string name="password_hint">Password</string>
-    <string name="login">Login</string>
-    <string name="sign_up_text">Sign Up</string>
+    <string name="login">SIGN IN</string>
+    <string name="sign_up_text">Don\'t have an account? Sign up!</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="get_password">Get password</string>
     <string name="forgot_password">Forgot password</string>
@@ -32,7 +34,7 @@
     <string name="first_name_hint">First Name</string>
     <string name="last_name_hint">Last Name</string>
     <string name="phone_number_hint">Phone Number (ex. 09xxxxxxxxx)</string>
-    <string name="sign_up_button_label">Sign Up</string>
+    <string name="sign_up_button_label">SIGN UP</string>
     <string name="signup_error_message">There was an error signing up</string>
     <string name="signup_error_title">Oops!</string>
     <string name="login_error_message">Incorrect username/password</string>
@@ -69,6 +71,9 @@
     <string name="title_activity_recipients">Choose Recipients</string>
     <string name="title_activity_view_image">Ribbit</string>
     <string name="title_activity_forgot_password">Forgot Password</string>
+
+    <string name="cancel_button_label">CANCEL</string>
+    <string name="content_desc_button_divider">Button Divider</string>
 
 
 

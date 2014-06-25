@@ -1,5 +1,6 @@
 package com.martyawesome.ribbit.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -35,6 +36,9 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_login);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
 
         mSignUpTextView = (TextView) findViewById(R.id.signUpText);
         mSignUpTextView.setOnClickListener(new View.OnClickListener() {

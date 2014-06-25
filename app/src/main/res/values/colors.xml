@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_orange">#FF8855</color>
+    <color name="light_grey">#bbb</color>
+    <color name="apptheme_color">#ff8800</color>
+    <color name="light_orange_button">#FFAA88</color>
+    <color name="pressed_orange_button">#FF8811</color>
+    <color name="focused_orange_button">#FF6633</color>
+
+</resources>

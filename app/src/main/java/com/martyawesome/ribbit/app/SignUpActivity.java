@@ -1,5 +1,6 @@
 package com.martyawesome.ribbit.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -28,6 +29,7 @@ public class SignUpActivity extends Activity {
     protected EditText mLastName;
     protected EditText mPhoneNumber;
     protected Button mSignUpButton;
+    protected Button mCancelButton;
 
     public static Boolean created = false;
 
@@ -37,15 +39,25 @@ public class SignUpActivity extends Activity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_sign_up);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.hide();
+
         mUsername = (EditText) findViewById(R.id.usernameField);
         mPassword = (EditText) findViewById(R.id.passwordField);
         mEmail = (EditText) findViewById(R.id.emailField);
         mFirstName = (EditText) findViewById(R.id.firstName);
         mLastName = (EditText) findViewById(R.id.lastName);
         mPhoneNumber = (EditText) findViewById(R.id.phoneNumber);
+
+        mCancelButton = (Button) findViewById(R.id.cancelButton);
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         mSignUpButton = (Button) findViewById(R.id.signUpButton);
-
-
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
