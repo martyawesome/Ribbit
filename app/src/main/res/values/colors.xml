@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background_orange">#FF8855</color>
+    <color name="background_color">#be2330</color>
     <color name="light_grey">#bbb</color>
-    <color name="apptheme_color">#ff8800</color>
-    <color name="light_orange_button">#FFAA88</color>
-    <color name="pressed_orange_button">#FF8811</color>
-    <color name="focused_orange_button">#FF6633</color>
-
+    <color name="apptheme_color">#be2330</color>
+    <color name="light_color_button">#FFAA88</color>
+    <color name="pressed_color_button">#dc4e4c</color>
+    <color name="focused_color_button">#f70b08</color>
+    <color name="light_background_color">#ede3e4</color>
+    <color name="swipeRefresh1">#FFAA88</color>
+    <color name="swipeRefresh2">#f45e25</color>
+    <color name="swipeRefresh3">#fc8903</color>
+    <color name="swipeRefresh4">#dc4e4c</color>
 </resources>

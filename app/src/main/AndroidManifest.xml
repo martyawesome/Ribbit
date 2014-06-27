@@ -11,52 +11,51 @@
         android:required="true" />
 
     <application
-        android:name=".SmartyApplication"
+        android:name="com.martyawesome.smarty.app.SmartyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.Smarty">
         <activity
-            android:name=".MainActivity"
+            android:name="com.martyawesome.smarty.app.ui.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.martyawesome.smarty.app.ui.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignUpActivity"
+            android:name="com.martyawesome.smarty.app.ui.SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="com.martyawesome.smarty.app.ui.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".EditFriendsActivity"
+            android:name="com.martyawesome.smarty.app.ui.EditFriendsActivity"
             android:label="@string/title_activity_edit_friends"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.martyawesome.smarty.app.ui.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RecipientsActivity"
+            android:name="com.martyawesome.smarty.app.ui.RecipientsActivity"
             android:label="@string/title_activity_recipients"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.martyawesome.smarty.app.ui.MainActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ViewImageActivity"
+            android:name="com.martyawesome.smarty.app.ui.ViewImageActivity"
             android:label="@string/title_activity_view_image"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="com.martyawesome.smarty.app.ui.MainActivity"
             android:screenOrientation="portrait" >
         </activity>
 
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name="com.martyawesome.smarty.app.ui.ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password"
-            android:parentActivityName=".LoginActivity"
+            android:parentActivityName="com.martyawesome.smarty.app.ui.LoginActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

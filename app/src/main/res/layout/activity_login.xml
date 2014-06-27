@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/AuthBackground"
-    tools:context="com.martyawesome.ribbit.app.LoginActivity"
+    tools:context="com.martyawesome.smarty.app.ui.LoginActivity"
     android:id="@+id/layout">
 
     <TextView

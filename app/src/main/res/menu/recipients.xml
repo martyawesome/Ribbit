@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.martyawesome.ribbit.app.RecipientsActivity" >
+    tools:context="com.martyawesome.smarty.app.ui.RecipientsActivity" >
     
     <item android:id="@+id/action_send"
         android:title="Send"

@@ -14,6 +14,18 @@
         revision="19.1.0"
         sha1="428e267abff0d10802ccde86b915da2c20471160"/>
     <item
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-a1396bea8d6e270bca3c54498d333d4cac5227c2.jar"
+        jar="B:\adt-bundle-windows-x86_64-20140321\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+    <item
+        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\Parse-1.5.1-985e10ad6e00b0620cd8e0eec4ae41759a431d3c.jar"
+        jar="B:\AndroidProjects\Smarty\app\libs\Parse-1.5.1.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
+    <item
         dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\classes-ba698f5bfa838f0cf2c5cbfc3a7cddbdacd49703.jar"
         jar="B:\AndroidProjects\Smarty\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
         jumboMode="false"
@@ -26,12 +38,6 @@
         revision="19.1.0"
         sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad"/>
     <item
-        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-a1396bea8d6e270bca3c54498d333d4cac5227c2.jar"
-        jar="B:\adt-bundle-windows-x86_64-20140321\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
-    <item
         dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\additionnal-ab7f03bd309b45a1405402b7071cbc443baea9f9.jar"
         jar="B:\AndroidProjects\Smarty\app\libs\additionnal.jar"
         jumboMode="false"
@@ -43,11 +49,5 @@
         jumboMode="false"
         revision="19.1.0"
         sha1="d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27"/>
-    <item
-        dex="B:\AndroidProjects\Smarty\app\build\intermediates\pre-dexed\debug\Parse-1.5.1-985e10ad6e00b0620cd8e0eec4ae41759a431d3c.jar"
-        jar="B:\AndroidProjects\Smarty\app\libs\Parse-1.5.1.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c"/>
 
 </pre-dex-items>

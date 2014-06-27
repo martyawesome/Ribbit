@@ -26,7 +26,7 @@
     <string name="login">SIGN IN</string>
     <string name="sign_up_text">Don\'t have an account? Sign up!</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
-    <string name="get_password">Get password</string>
+    <string name="get_password">GET PASSWORD</string>
     <string name="forgot_password">Forgot password</string>
     <string name="getting_password">Getting your password</string>
     <string name="password_sent">Your password is sent to your email</string>
@@ -55,7 +55,6 @@
     <string name="empty_recipients_list_message">Choose some friends first!</string>
     <string name="menu_send_label">Send</string>
     <string name="error_selecting_file">There was an error with the file selected. Please select a different file.</string>
-    <string name="error_selecting_file_title">We\'re sorry!</string>
     <string name="success_message">Message sent!</string>
     <string name="error_sending_message">There was an error sending your message. Please try again.</string>
     <string name="sending_file">Sending file</string>
@@ -74,7 +73,8 @@
 
     <string name="cancel_button_label">CANCEL</string>
     <string name="content_desc_button_divider">Button Divider</string>
-
+    <string name="content_desc_message_icon">Message Icon</string>
+    <string name="user_avatar">User avatar</string>
 
 
 </resources>
