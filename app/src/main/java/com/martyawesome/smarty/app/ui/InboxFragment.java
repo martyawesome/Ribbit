@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.martyawesome.ribbit.app.R;
+import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.adapters.MessageAdapter;
 import com.martyawesome.smarty.app.utils.ParseConstants;
 import com.parse.FindCallback;
@@ -54,6 +54,7 @@ public class InboxFragment extends ListFragment {
 
         if (isOnline()) {
             retrieveMessages();
+            getActivity().setProgressBarIndeterminateVisibility(false);
         } else {
             getActivity().setProgressBarIndeterminateVisibility(false);
             Toast.makeText(getActivity().getBaseContext(), getString(R.string.internet_error), Toast.LENGTH_LONG).show();
@@ -124,14 +125,12 @@ public class InboxFragment extends ListFragment {
     };
 
     public void retrieveMessages(){
-
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(ParseConstants.CLASS_MESSAGES);
         query.whereEqualTo(ParseConstants.KEY_RECIPIENT_IDS, ParseUser.getCurrentUser().getObjectId());
         query.addDescendingOrder(ParseConstants.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> messages, ParseException e) {
-                getActivity().setProgressBarIndeterminateVisibility(false);
 
                 if(mSwipeRefreshLayout.isRefreshing()){
                     mSwipeRefreshLayout.setRefreshing(false);

@@ -15,7 +15,7 @@
         <item name="android:listViewStyle">@style/Theme.Smarty.LightBackgroundColor</item>
         <item name="android:gridViewStyle">@style/Theme.Smarty.LightBackgroundColor.GridView</item>
     </style>
-    
+
     <style name="Theme.Smarty.LightBackgroundColor">
         <item name="android:background">@color/light_background_color</item>
     </style>
@@ -24,6 +24,7 @@
     <style name="Theme.Smarty.LightBackgroundColor.GridView">
         <item name="android:padding">@dimen/user_grid_spacing</item>
     </style>
+
     <style name="ActionBar.Solid.Smarty" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
         <item name="android:background">@drawable/ab_solid_smarty</item>
         <item name="android:backgroundStacked">@drawable/ab_stacked_solid_smarty</item>
@@ -35,10 +36,9 @@
         <item name="android:icon">@android:color/transparent</item>
     </style>
 
-    <style name="ActionBar.Solid.Smarty.TitleTextStyle"
-        parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-       <item name="android:textColor">@android:color/white</item>
-        </style>
+    <style name="ActionBar.Solid.Smarty.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
     <style name="ActionBar.Transparent.Smarty" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@drawable/ab_transparent_smarty</item>
@@ -133,4 +133,12 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="GridImage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
 </resources>

@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.martyawesome.ribbit.app.R;
+import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.utils.ParseConstants;
 import com.parse.ParseObject;
 

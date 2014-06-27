@@ -14,7 +14,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.martyawesome.ribbit.app.R;
+import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.adapters.UserAdapter;
 import com.martyawesome.smarty.app.utils.ParseConstants;
 import com.parse.FindCallback;
@@ -39,7 +39,7 @@ public class FriendsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_friends, container, false);
+        View rootView = inflater.inflate(R.layout.user_grid, container, false);
 
         mGridView = (GridView) rootView.findViewById(R.id.friendsGrid);
         TextView emptyTextView = (TextView) rootView.findViewById(android.R.id.empty);
@@ -62,8 +62,6 @@ public class FriendsFragment extends Fragment {
             query.findInBackground(new FindCallback<ParseUser>() {
                 @Override
                 public void done(List<ParseUser> friends, ParseException e) {
-                    getActivity().setProgressBarIndeterminateVisibility(false);
-
                     if (e == null) {
                         mFriends = friends;
 
@@ -90,6 +88,7 @@ public class FriendsFragment extends Fragment {
                     }
                 }
             });
+            getActivity().setProgressBarIndeterminateVisibility(false);
         } else {
             getActivity().setProgressBarIndeterminateVisibility(false);
             Toast.makeText(getActivity().getBaseContext(), getString(R.string.internet_error), Toast.LENGTH_LONG).show();

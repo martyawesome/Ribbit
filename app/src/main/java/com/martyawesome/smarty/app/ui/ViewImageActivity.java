@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.martyawesome.ribbit.app.R;
+import com.martyawesome.smarty.app.R;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;

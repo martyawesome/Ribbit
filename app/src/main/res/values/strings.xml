@@ -42,7 +42,7 @@
     <string name="login_error_title">Oops!</string>
     <string name="menu_logout_label">Logout</string>
     <string name="empty_inbox_label">No new messages!</string>
-    <string name="empty_friends_label">Add friends to begin!</string>
+    <string name="empty_friends_label">Add friends to begin or check internet connection!</string>
     <string name="menu_edit_friends_label">Edit Friends</string>
     <string name="title_activity_edit_friends">Edit Friends</string>
     <string name="error_title">We\'re Sorry!</string>
@@ -75,6 +75,7 @@
     <string name="content_desc_button_divider">Button Divider</string>
     <string name="content_desc_message_icon">Message Icon</string>
     <string name="user_avatar">User avatar</string>
-
+    <string name="content_desc_user_checkmark">Checked mark</string>
+    <string name="push_message">You have a new message from %s!</string>
 
 </resources>

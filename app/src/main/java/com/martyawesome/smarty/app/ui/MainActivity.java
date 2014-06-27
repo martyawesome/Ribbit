@@ -20,9 +20,9 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.martyawesome.ribbit.app.R;
-import com.martyawesome.smarty.app.utils.ParseConstants;
+import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.adapters.SectionsPagerAdapter;
+import com.martyawesome.smarty.app.utils.ParseConstants;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
@@ -33,6 +33,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
 
 //import android.support.v13.app.FragmentPagerAdapter;
 

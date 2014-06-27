@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.martyawesome.ribbit.app.R;
+import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.ui.FriendsFragment;
 import com.martyawesome.smarty.app.ui.InboxFragment;
 

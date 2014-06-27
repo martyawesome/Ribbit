@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background_color">#be2330</color>
+    <color name="background_color">#dc4e4c</color>
     <color name="light_grey">#bbb</color>
-    <color name="apptheme_color">#be2330</color>
+    <color name="apptheme_color">#dc4e4c</color>
     <color name="light_color_button">#FFAA88</color>
     <color name="pressed_color_button">#dc4e4c</color>
     <color name="focused_color_button">#f70b08</color>

@@ -13,7 +13,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.martyawesome.ribbit.app.R;
+import com.martyawesome.smarty.app.R;
+import com.martyawesome.smarty.app.SmartyApplication;
 import com.martyawesome.smarty.app.utils.ParseConstants;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -109,6 +110,7 @@ public class SignUpActivity extends Activity {
                                         @Override
                                         public void done(ParseException e) {
                                             if (e == null) {
+                                                SmartyApplication.updateParseInstallation(ParseUser.getCurrentUser());
                                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
