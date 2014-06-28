@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.martyawesome.smarty.app.R;
-import com.martyawesome.smarty.app.SmartyApplication;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -69,6 +68,9 @@ public class LoginActivity extends Activity {
         mUsername = (EditText) findViewById(R.id.usernameField);
         mPassword = (EditText) findViewById(R.id.passwordField);
         mLoginButton = (Button) findViewById(R.id.loginButton);
+        mUsername = (EditText) findViewById(R.id.usernameField);
+        mPassword = (EditText) findViewById(R.id.passwordField);
+        mLoginButton = (Button) findViewById(R.id.loginButton);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,14 +94,11 @@ public class LoginActivity extends Activity {
                         progressDialog.setMessage(getString(R.string.signing_in));
                         progressDialog.setCancelable(false);
                         progressDialog.show();
-
                         ParseUser.logInInBackground(username, password, new LogInCallback() {
                             @Override
                             public void done(ParseUser parseUser, ParseException e) {
                                 progressDialog.dismiss();
                                 if (e == null) {
-                                    SmartyApplication.updateParseInstallation(parseUser);
-
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -125,6 +124,7 @@ public class LoginActivity extends Activity {
                 }
             }
         });
+
     }
 
     public boolean isOnline() {

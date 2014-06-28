@@ -15,11 +15,8 @@ import android.widget.EditText;
 
 import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.SmartyApplication;
-import com.martyawesome.smarty.app.utils.ParseConstants;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 
@@ -67,9 +64,9 @@ public class SignUpActivity extends Activity {
                 String password = mPassword.getText().toString();
                 String email = mEmail.getText().toString();
                 String firstNamePiece = mFirstName.getText().toString();
-                final String firstName = firstNamePiece.substring(0,1).toUpperCase() + firstNamePiece.substring(1);
+                final String firstName = firstNamePiece.substring(0, 1).toUpperCase() + firstNamePiece.substring(1);
                 String lastNamePiece = mLastName.getText().toString();
-                final String lastName = lastNamePiece.substring(0,1).toUpperCase() + lastNamePiece.substring(1);
+                final String lastName = lastNamePiece.substring(0, 1).toUpperCase() + lastNamePiece.substring(1);
                 username = username.trim();
                 password = password.trim();
                 email = email.trim();
@@ -102,32 +99,14 @@ public class SignUpActivity extends Activity {
                             @Override
                             public void done(ParseException e) {
                                 if (e == null) {
-                                    ParseObject newUserInfo = new ParseObject(ParseConstants.CLASS_USER_INFO);
-                                    newUserInfo.put(ParseConstants.KEY_USERNAME, finalUsername);
-                                    newUserInfo.put(ParseConstants.KEY_FIRST_NAME, firstName);
-                                    newUserInfo.put(ParseConstants.KEY_LAST_NAME, lastName);
-                                    newUserInfo.saveInBackground(new SaveCallback() {
-                                        @Override
-                                        public void done(ParseException e) {
-                                            if (e == null) {
-                                                SmartyApplication.updateParseInstallation(ParseUser.getCurrentUser());
-                                                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                startActivity(intent);
-                                            } else {
-                                                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                                                builder.setMessage(R.string.signup_error_message)
-                                                        .setTitle(R.string.signup_error_title)
-                                                        .setPositiveButton(android.R.string.ok, null);
-                                                AlertDialog dialog = builder.create();
-                                                dialog.show();
-                                            }
-                                        }
-                                    });
+                                    SmartyApplication.updateParseInstallation(ParseUser.getCurrentUser());
+                                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                                 } else {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                                    builder.setMessage(R.string.signup_error_message)
+                                    builder.setMessage(e.toString())
                                             .setTitle(R.string.signup_error_title)
                                             .setPositiveButton(android.R.string.ok, null);
                                     AlertDialog dialog = builder.create();

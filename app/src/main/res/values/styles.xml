@@ -14,6 +14,9 @@
         <item name="android:editTextBackground">@drawable/apptheme_edit_text_holo_light</item>
         <item name="android:listViewStyle">@style/Theme.Smarty.LightBackgroundColor</item>
         <item name="android:gridViewStyle">@style/Theme.Smarty.LightBackgroundColor.GridView</item>
+        <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
+        <item name="displayOptions">showHome|homeAsUp|showTitle</item>
+        <item name="android:icon">@android:color/transparent</item>
     </style>
 
     <style name="Theme.Smarty.LightBackgroundColor">
@@ -31,9 +34,6 @@
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_smarty</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Smarty</item>
         <item name="android:titleTextStyle">@style/ActionBar.Solid.Smarty.TitleTextStyle</item>
-        <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
-        <item name="displayOptions">showHome|homeAsUp|showTitle</item>
-        <item name="android:icon">@android:color/transparent</item>
     </style>
 
     <style name="ActionBar.Solid.Smarty.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
@@ -63,7 +63,7 @@
         <item name="android:dropDownSelector">@drawable/selectable_background_smarty</item>
     </style>
 
-    <style name="ProgressBar.Smarty" parent="@android:style/Widget.Holo.Light.ProgressBar.Horizontal">
+    <style name="ProgressBar.Smarty" parent="@android:style/Widget.Holo.Light.ProgressBar">
         <item name="android:progressDrawable">@drawable/progress_horizontal_smarty</item>
     </style>
 
@@ -140,5 +140,13 @@
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:scaleType">fitXY</item>
         <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="Profile">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/profile_value_vertical</item>
+        <item name="android:textSize">18sp</item>
     </style>
 </resources>

@@ -42,7 +42,7 @@ public class InboxFragment extends ListFragment {
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         mSwipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
-        mSwipeRefreshLayout.setColorScheme(R.color.swipeRefresh1,R.color.swipeRefresh2,R.color.swipeRefresh3,R.color.swipeRefresh4);
+        mSwipeRefreshLayout.setColorScheme(R.color.swipeRefresh1, R.color.swipeRefresh2, R.color.swipeRefresh3, R.color.swipeRefresh4);
 
         return rootView;
     }
@@ -52,9 +52,10 @@ public class InboxFragment extends ListFragment {
         super.onResume();
         getActivity().setProgressBarIndeterminateVisibility(true);
 
+
         if (isOnline()) {
             retrieveMessages();
-            getActivity().setProgressBarIndeterminateVisibility(false);
+
         } else {
             getActivity().setProgressBarIndeterminateVisibility(false);
             Toast.makeText(getActivity().getBaseContext(), getString(R.string.internet_error), Toast.LENGTH_LONG).show();
@@ -109,30 +110,31 @@ public class InboxFragment extends ListFragment {
         return false;
     }
 
-    protected SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener(){
+    protected SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
 
-         @Override
-        public void onRefresh(){
-             if (isOnline()) {
-                 retrieveMessages();
-             } else {
-                 if(mSwipeRefreshLayout.isRefreshing()){
-                     mSwipeRefreshLayout.setRefreshing(false);
-                 }
-                 Toast.makeText(getActivity().getBaseContext(), getString(R.string.internet_error), Toast.LENGTH_LONG).show();
-             }
+        @Override
+        public void onRefresh() {
+            if (isOnline()) {
+                retrieveMessages();
+            } else {
+                if (mSwipeRefreshLayout.isRefreshing()) {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+                Toast.makeText(getActivity().getBaseContext(), getString(R.string.internet_error), Toast.LENGTH_LONG).show();
+            }
         }
     };
 
-    public void retrieveMessages(){
+    public void retrieveMessages() {
+        getActivity().setProgressBarIndeterminateVisibility(true);
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(ParseConstants.CLASS_MESSAGES);
         query.whereEqualTo(ParseConstants.KEY_RECIPIENT_IDS, ParseUser.getCurrentUser().getObjectId());
         query.addDescendingOrder(ParseConstants.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> messages, ParseException e) {
-
-                if(mSwipeRefreshLayout.isRefreshing()){
+                getActivity().setProgressBarIndeterminateVisibility(false);
+                if (mSwipeRefreshLayout.isRefreshing()) {
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
                 if (e == null) {

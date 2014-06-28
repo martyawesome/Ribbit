@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.martyawesome.smarty.app">
+    package="com.martyawesome.smarty.app" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,8 +12,9 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <permission
-        android:protectionLevel="signature"
-        android:name="com.martyawesome.smarty.app.permission.C2D_MESSAGE" />
+        android:name="com.martyawesome.smarty.app.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="com.martyawesome.smarty.app.permission.C2D_MESSAGE" />
 
     <uses-feature
@@ -21,59 +22,57 @@
         android:required="true" />
 
     <application
-        android:name="com.martyawesome.smarty.app.SmartyApplication"
+        android:name=".SmartyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Smarty">
+        android:theme="@style/Theme.Smarty" >
         <activity
-            android:name="com.martyawesome.smarty.app.ui.MainActivity"
+            android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.martyawesome.smarty.app.ui.LoginActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.martyawesome.smarty.app.ui.SignUpActivity"
+            android:name=".ui.SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName="com.martyawesome.smarty.app.ui.LoginActivity"
+            android:parentActivityName=".ui.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.martyawesome.smarty.app.ui.EditFriendsActivity"
+            android:name=".ui.EditFriendsActivity"
             android:label="@string/title_activity_edit_friends"
-            android:parentActivityName="com.martyawesome.smarty.app.ui.MainActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.martyawesome.smarty.app.ui.RecipientsActivity"
+            android:name=".ui.RecipientsActivity"
             android:label="@string/title_activity_recipients"
-            android:parentActivityName="com.martyawesome.smarty.app.ui.MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:parentActivityName=".ui.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.martyawesome.smarty.app.ui.ViewImageActivity"
+            android:name=".ui.ViewImageActivity"
             android:label="@string/title_activity_view_image"
-            android:parentActivityName="com.martyawesome.smarty.app.ui.MainActivity"
-            android:screenOrientation="portrait"></activity>
-
+            android:parentActivityName=".ui.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name="com.martyawesome.smarty.app.ui.ForgotPasswordActivity"
+            android:name=".ui.ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password"
-            android:parentActivityName="com.martyawesome.smarty.app.ui.LoginActivity"
-            android:screenOrientation="portrait">
+            android:parentActivityName=".ui.LoginActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="LoginActivity" />
         </activity>
 
-
         <service android:name="com.parse.PushService" />
 
-        <receiver android:name="com.parse.ParseBroadcastReceiver">
+        <receiver android:name="com.parse.ParseBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -81,7 +80,7 @@
         </receiver>
         <receiver
             android:name="com.parse.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
@@ -89,7 +88,25 @@
                 <category android:name="com.martyawesome.smarty.app" />
             </intent-filter>
         </receiver>
-    </application>
 
+        <activity
+            android:name=".ui.ProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:parentActivityName=".ui.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.EditProfileActivity"
+            android:label="@string/title_activity_edit_profile"
+            android:parentActivityName=".ui.ProfileActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ProfileActivity" />
+        </activity>
+    </application>
 
 </manifest>

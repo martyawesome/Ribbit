@@ -325,6 +325,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 break;
+            case R.id.action_profile:
+                intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

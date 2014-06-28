@@ -55,6 +55,7 @@ public class FriendsFragment extends Fragment {
         getActivity().setProgressBarIndeterminateVisibility(true);
 
         if (isOnline()) {
+            getActivity().setProgressBarIndeterminateVisibility(true);
             mCurrentUser = ParseUser.getCurrentUser();
             mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
             ParseQuery<ParseUser> query = mFriendsRelation.getQuery();
@@ -62,6 +63,7 @@ public class FriendsFragment extends Fragment {
             query.findInBackground(new FindCallback<ParseUser>() {
                 @Override
                 public void done(List<ParseUser> friends, ParseException e) {
+                    getActivity().setProgressBarIndeterminateVisibility(false);
                     if (e == null) {
                         mFriends = friends;
 
