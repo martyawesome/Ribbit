@@ -6,16 +6,18 @@ package com.martyawesome.smarty.app.utils;
 public final class ParseConstants {
     //Class name
     public static final String CLASS_MESSAGES = "Messages";
-    public static final String CLASS_USER_INFO = "User_Info";
+    public static final String CLASS_REQUESTS = "Requests";
+    public static final String CLASS_USER = "_User";
 
     //Field names
     public static final String KEY_USER_ID = "userId";
+    public static final String KEY_NUMBER_ID = "numberId";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_FIRST_NAME = "firstName";
     public static final String KEY_LAST_NAME = "lastName";
-    public static final String KEY_PHONE_NUMBER = "phoneNumber";
+    public static final String KEY_PROFILE_PICTURE = "profilePicture";
     public static final String KEY_FRIENDS_RELATION = "friendsRelation";
     public static final String KEY_RECIPIENT_IDS = "recipientIds";
     public static final String KEY_SENDER_ID = "senderId";
@@ -31,4 +33,7 @@ public final class ParseConstants {
     public static final String KEY_SUBJECT = "Getting Your Password";
     public static final String KEY_BODY = "Good day! Your password is ";
 
+    //Requests
+    public static final String KEY_REQUEST_TO = "requestTo";
+    public static final String KEY_REQUEST_FROM = "requestFrom";
 }

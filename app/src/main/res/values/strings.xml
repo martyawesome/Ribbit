@@ -34,6 +34,8 @@
     <string name="phone_number_hint">Phone Number (ex. 09xxxxxxxxx)</string>
     <string name="sign_up_button_label">SIGN UP</string>
     <string name="signup_error_message">There was an error signing up</string>
+    <string name="signup_success_message">Your account is successfully created!</string>
+    <string name="creating_account">Creating your account</string>
     <string name="signup_error_title">Oops!</string>
     <string name="login_error_message">Incorrect username/password</string>
     <string name="change_password_error">There was an error changing your password</string>
@@ -41,7 +43,8 @@
     <string name="menu_logout_label">Logout</string>
     <string name="empty_inbox_label">No new messages!</string>
     <string name="empty_friends_label">Add friends to begin or check internet connection!</string>
-    <string name="menu_edit_friends_label">Edit Friends</string>
+    <string name="menu_edit_friends_label">Add Friends</string>
+    <string name="menu_pending_friends_label">Pending Friends</string>
     <string name="title_activity_edit_friends">Edit Friends</string>
     <string name="error_title">We\'re Sorry!</string>
     <string name="menu_camera_label">Camera</string>
@@ -64,6 +67,10 @@
         <item>Choose Picture</item>
         <item>Choose Video</item>
     </string-array>
+    <string-array name="photo_choices">
+        <item>Take Picture</item>
+        <item>Choose Picture</item>
+    </string-array>
 
     <string name="title_activity_recipients">Choose Recipients</string>
     <string name="title_activity_view_image">Ribbit</string>
@@ -79,5 +86,17 @@
     <string name="title_activity_edit_profile">Edit Profile</string>
     <string name="activity_edit_profile_success">Profile successfully updated!</string>
     <string name="success">Success!</string>
+    <string name="editing_profile">Editing your profile. Please wait.</string>
+    <string name="title_activity_pending_requests">Pending Requests</string>
+    <string name="add_successful">Friend request sent</string>
+    <string name="add_exist">You have already sent a friend request</string>
+    <string name="delete_friend_title">Unfriend</string>
+    <string name="delete_friend_body">Are you sure you want to unfriend this person?</string>
+    <string name="delete_friend_success">Unfriend successful</string>
+    <string name="add_friend_title">Add Friend</string>
+    <string name="add_friend_body">Are you sure you want to add this person?</string>
+    <string name="accept_request">Accept Friend Request</string>
+    <string name="view_profile">View Profile</string>
+
 
 </resources>

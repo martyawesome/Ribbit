@@ -31,7 +31,7 @@ import java.util.List;
  * Created by User on 6/19/2014.
  */
 public class InboxFragment extends ListFragment {
-
+    public int mCount;
     protected List<ParseObject> mMessages;
     protected SwipeRefreshLayout mSwipeRefreshLayout;
 

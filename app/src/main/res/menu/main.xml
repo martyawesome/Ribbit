@@ -18,6 +18,10 @@
                 android:title="@string/menu_edit_friends_label"
                 android:visible="true"/>
 
+            <item android:id="@+id/action_pending_friends"
+                android:title="@string/menu_pending_friends_label"
+                android:visible="true"/>
+
             <item android:id="@+id/action_profile"
                 android:title="@string/title_activity_profile"
                 android:visible="true"/>

@@ -43,6 +43,7 @@
         android:layout_below="@+id/editTextLayout"
         style="@style/AuthButton"
         android:layout_width="400dp"
+        android:background="@drawable/button_custom_grey"
         android:layout_centerHorizontal="true"/>
 
     <TextView

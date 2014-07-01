@@ -55,7 +55,6 @@ public class FriendsFragment extends Fragment {
         getActivity().setProgressBarIndeterminateVisibility(true);
 
         if (isOnline()) {
-            getActivity().setProgressBarIndeterminateVisibility(true);
             mCurrentUser = ParseUser.getCurrentUser();
             mFriendsRelation = mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
             ParseQuery<ParseUser> query = mFriendsRelation.getQuery();
@@ -73,10 +72,10 @@ public class FriendsFragment extends Fragment {
                             usernames[i] = user.getUsername();
                             i++;
                         }
-                        if(mGridView.getAdapter()==null) {
+                        if (mGridView.getAdapter() == null) {
                             UserAdapter adapter = new UserAdapter(getActivity(), mFriends);
                             mGridView.setAdapter(adapter);
-                        }else{
+                        } else {
                             ((UserAdapter) mGridView.getAdapter()).refill(mFriends);
                         }
                     } else {
@@ -90,7 +89,6 @@ public class FriendsFragment extends Fragment {
                     }
                 }
             });
-            getActivity().setProgressBarIndeterminateVisibility(false);
         } else {
             getActivity().setProgressBarIndeterminateVisibility(false);
             Toast.makeText(getActivity().getBaseContext(), getString(R.string.internet_error), Toast.LENGTH_LONG).show();

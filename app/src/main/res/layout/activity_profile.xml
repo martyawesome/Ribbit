@@ -4,95 +4,144 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_profile_horizontal_margin"
     android:paddingRight="@dimen/activity_profile_horizontal_margin"
-    android:paddingBottom="@dimen/activity_profile_vertical_margin"
-    android:paddingTop="@dimen/activity_profile_vertical_margin"
+    android:paddingTop="@dimen/inbox_vertical_margin"
     tools:context="com.martyawesome.smarty.app.ui.ProfileActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="12">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="4">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/avatar_empty"
-                android:layout_marginBottom="@dimen/login_vertical_margin" />
-
-
-        </LinearLayout>
+        android:weightSum="6"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:background="@color/lightest_grey">
+            android:weightSum="9"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_weight="5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/avatar_empty"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitCenter" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_weight="4">
+
+            <LinearLayout
+                android:id="@+id/editTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightest_grey"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:text="Username:"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:layout_gravity="left"
+                    style="@style/Profile" />
+
+                <TextView
+                    android:id="@+id/usernameValue"
+                    android:text="Username"
+                    android:paddingBottom="0dp"
+                    android:paddingTop="0dp"
+                    android:layout_marginTop="0dp"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    style="@style/Profile" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:text="Name:"
+                    android:paddingBottom="0dp"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:layout_gravity="left"
+                    style="@style/Profile" />
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="0dp"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/firstName"
+                        android:text="First Name"
+                        android:layout_marginTop="0dp"
+                        android:gravity="right"
+                        android:layout_marginRight="2dp"
+                        android:layout_weight="1"
+                        style="@style/Profile" />
+
+                    <TextView
+                        android:id="@+id/lastName"
+                        android:text="Last Name"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="2dp"
+                        android:gravity="left"
+                        android:layout_weight="1"
+                        style="@style/Profile" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/email"
+                    android:text="Email:"
+                    style="@style/Profile"
+                    android:paddingTop="@dimen/profile_value_vertical"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:paddingBottom="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_gravity="left"/>
+
+                <TextView
+                    android:id="@+id/emailValue"
+                    android:text="Email"
+                    style="@style/Profile"
+                    android:paddingTop="0dp"
+                    android:layout_marginTop="0dp"
+                    android:paddingBottom="7dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
 
             <Button
                 android:id="@+id/editProfileButton"
                 android:text="@string/edit_profile"
                 style="@style/AuthButton"
                 android:layout_margin="0dp"
-                android:layout_gravity="center_horizontal"
                 android:textSize="20dp"
-                android:background="@drawable/button_custom_grey" />
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:background="@drawable/button_custom_grey"
+                android:layout_below="@+id/editTextLayout" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:orientation="vertical"
-            android:background="@color/lightest_grey">
-
-            <TextView
-                android:id="@+id/username"
-                android:text="Username"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                style="@style/Profile"/>
-
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/profile_value_vertical"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/firstName"
-                    android:text="First Name"
-                    android:layout_marginTop="0dp"
-                    android:gravity="right"
-                    android:layout_marginRight="2dp"
-                    android:layout_weight="1"
-                    style="@style/Profile" />
-
-                <TextView
-                    android:id="@+id/lastName"
-                    android:text="Last Name"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginLeft="2dp"
-                    android:gravity="left"
-                    android:layout_weight="1"
-                    style="@style/Profile" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/email"
-                android:text="Email"
-                style="@style/Profile" />
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

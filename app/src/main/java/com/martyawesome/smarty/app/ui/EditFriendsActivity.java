@@ -3,6 +3,7 @@ package com.martyawesome.smarty.app.ui;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -22,7 +23,9 @@ import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.adapters.UserAdapter;
 import com.martyawesome.smarty.app.utils.ParseConstants;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
@@ -37,8 +40,12 @@ public class EditFriendsActivity extends Activity {
 
     protected List<ParseUser> mUsers;
     protected ParseRelation<ParseUser> mFriendsRelation;
+    protected ParseRelation<ParseObject> mAccept;
+    protected ParseRelation<ParseObject> mDelete;
     protected ParseUser mCurrentUser;
     protected GridView mGridView;
+    public ImageView checkImageView;
+    public int mPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +72,11 @@ public class EditFriendsActivity extends Activity {
 
             setProgressBarIndeterminateVisibility(true);
 
+            String currentUser = ParseUser.getCurrentUser().getUsername();
+
             ParseQuery<ParseUser> query = ParseUser.getQuery();
             query.orderByAscending(ParseConstants.KEY_USERNAME);
+            query.whereNotEqualTo(ParseConstants.KEY_USERNAME, currentUser);
             query.setLimit(1000);
             query.findInBackground(new FindCallback<ParseUser>() {
 
@@ -150,27 +160,15 @@ public class EditFriendsActivity extends Activity {
     protected OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            ImageView checkImageView = (ImageView) view.findViewById(R.id.checkImageView);
-
-            if (mGridView.isItemChecked(position)) {
+            checkImageView = (ImageView) view.findViewById(R.id.checkImageView);
+            mPosition = position;
+            if (checkImageView.getVisibility() == View.INVISIBLE) {
                 //add friend
-                mFriendsRelation.add(mUsers.get(position));
-                checkImageView.setVisibility(View.VISIBLE);
+                 sendFriendRequest();
             } else {
                 //remove friend
-                mFriendsRelation.remove(mUsers.get(position));
-                checkImageView.setVisibility(View.INVISIBLE);
+                unFriend();
             }
-
-            mCurrentUser.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if (e != null) {
-                        Log.e(TAG, e.getMessage());
-                    }
-                }
-            });
-
         }
     };
 
@@ -182,5 +180,87 @@ public class EditFriendsActivity extends Activity {
             return true;
         }
         return false;
+    }
+
+    public void sendFriendRequest(){
+        setProgressBarIndeterminateVisibility(true);
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(ParseConstants.CLASS_REQUESTS);
+        query.whereEqualTo(ParseConstants.KEY_REQUEST_FROM, mCurrentUser.getUsername());
+        query.whereEqualTo(ParseConstants.KEY_REQUEST_TO, mUsers.get(mPosition).getUsername());
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject parseObject, ParseException e) {
+                if (e != null) {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(EditFriendsActivity.this);
+                    alertDialogBuilder.setTitle(getString(R.string.add_friend_title))
+                            .setMessage(getString(R.string.add_friend_body))
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    ParseObject object = new ParseObject(ParseConstants.CLASS_REQUESTS);
+                                    object.put(ParseConstants.KEY_REQUEST_FROM, mCurrentUser.getUsername());
+                                    object.put(ParseConstants.KEY_REQUEST_TO, mUsers.get(mPosition).getUsername());
+                                    object.saveInBackground(new SaveCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            setProgressBarIndeterminateVisibility(false);
+                                            if (e == null) {
+                                                Toast.makeText(EditFriendsActivity.this, getString(R.string.add_successful), Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(EditFriendsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+
+                } else {
+                    Toast.makeText(EditFriendsActivity.this, getString(R.string.add_exist), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void unFriend(){
+        setProgressBarIndeterminateVisibility(true);
+        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(ParseConstants.CLASS_REQUESTS);
+        query.whereEqualTo(ParseConstants.KEY_REQUEST_FROM, mCurrentUser.getUsername());
+        query.whereEqualTo(ParseConstants.KEY_REQUEST_TO, mUsers.get(mPosition).getUsername());
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(final ParseObject parseObject, ParseException e) {
+                setProgressBarIndeterminateVisibility(false);
+                if (e == null) {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(EditFriendsActivity.this);
+                    alertDialogBuilder.setTitle(getString(R.string.delete_friend_title))
+                            .setMessage(getString(R.string.delete_friend_body))
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    ParseObject object = new ParseObject(ParseConstants.CLASS_REQUESTS);
+                                    object.createWithoutData(ParseConstants.CLASS_REQUESTS, mUsers.get(mPosition).getUsername()).deleteEventually();
+                                    Toast.makeText(EditFriendsActivity.this, getString(R.string.delete_friend_success), Toast.LENGTH_SHORT).show();
+                                    checkImageView.setVisibility(View.INVISIBLE);
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                } else {
+                    Toast.makeText(EditFriendsActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

@@ -33,6 +33,7 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -102,10 +103,26 @@
             android:name=".ui.EditProfileActivity"
             android:label="@string/title_activity_edit_profile"
             android:parentActivityName=".ui.ProfileActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".ui.PendingRequestsActivity"
+            android:label="@string/title_activity_pending_requests"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.ViewProfileActivity"
+            android:label="@string/title_activity_profile"
+            android:parentActivityName=".ui.PendingRequestsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="PendingRequest" />
         </activity>
     </application>
 

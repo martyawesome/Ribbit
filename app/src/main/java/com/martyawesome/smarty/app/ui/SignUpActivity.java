@@ -3,6 +3,7 @@ package com.martyawesome.smarty.app.ui;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -12,26 +13,36 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.martyawesome.smarty.app.R;
 import com.martyawesome.smarty.app.SmartyApplication;
+import com.martyawesome.smarty.app.utils.ParseConstants;
+import com.parse.CountCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 
 public class SignUpActivity extends Activity {
 
-    protected EditText mUsername;
-    protected EditText mPassword;
-    protected EditText mEmail;
-    protected EditText mFirstName;
-    protected EditText mLastName;
-    protected EditText mPhoneNumber;
+    protected EditText mUsernameEditText;
+    protected EditText mPasswordEditText;
+    protected EditText mEmailEditText;
+    protected EditText mFirstNameEditText;
+    protected EditText mLastNameEditText;
     protected Button mSignUpButton;
     protected Button mCancelButton;
 
-    public static Boolean created = false;
+    public String mUsername;
+    public String mPassword;
+    public String mEmail;
+    public String mFirstName;
+    public String mLastName;
+
+    public ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +53,11 @@ public class SignUpActivity extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.hide();
 
-        mUsername = (EditText) findViewById(R.id.usernameField);
-        mPassword = (EditText) findViewById(R.id.passwordField);
-        mEmail = (EditText) findViewById(R.id.emailField);
-        mFirstName = (EditText) findViewById(R.id.firstName);
-        mLastName = (EditText) findViewById(R.id.lastName);
+        mUsernameEditText = (EditText) findViewById(R.id.usernameField);
+        mPasswordEditText = (EditText) findViewById(R.id.passwordField);
+        mEmailEditText = (EditText) findViewById(R.id.emailField);
+        mFirstNameEditText = (EditText) findViewById(R.id.firstName);
+        mLastNameEditText = (EditText) findViewById(R.id.lastName);
 
         mCancelButton = (Button) findViewById(R.id.cancelButton);
         mCancelButton.setOnClickListener(new View.OnClickListener() {
@@ -60,64 +71,82 @@ public class SignUpActivity extends Activity {
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = mUsername.getText().toString();
-                String password = mPassword.getText().toString();
-                String email = mEmail.getText().toString();
-                String firstNamePiece = mFirstName.getText().toString();
-                final String firstName = firstNamePiece.substring(0, 1).toUpperCase() + firstNamePiece.substring(1);
-                String lastNamePiece = mLastName.getText().toString();
-                final String lastName = lastNamePiece.substring(0, 1).toUpperCase() + lastNamePiece.substring(1);
-                username = username.trim();
-                password = password.trim();
-                email = email.trim();
+                mUsername = mUsernameEditText.getText().toString();
+                mPassword = mPasswordEditText.getText().toString();
+                mEmail = mEmailEditText.getText().toString();
+                String firstNamePiece = mFirstNameEditText.getText().toString();
+                mFirstName = firstNamePiece.substring(0, 1).toUpperCase() + firstNamePiece.substring(1);
+                String lastNamePiece = mLastNameEditText.getText().toString();
+                mLastName = lastNamePiece.substring(0, 1).toUpperCase() + lastNamePiece.substring(1);
+                mUsername = mUsername.trim();
+                mPassword = mPassword.trim();
+                mEmail = mEmail.trim();
 
-                if (username.isEmpty() || password.isEmpty() || email.isEmpty()
-                        || firstName.isEmpty() || lastName.isEmpty()) {
-                    if (username.isEmpty()) {
-                        mUsername.setError(getString(R.string.error_field_required));
+                if (mUsername.isEmpty() || mPassword.isEmpty() || mEmail.isEmpty()
+                        || mFirstName.isEmpty() || mLastName.isEmpty()) {
+                    if (mUsername.isEmpty()) {
+                        mUsernameEditText.setError(getString(R.string.error_field_required));
                     }
-                    if (password.isEmpty()) {
-                        mPassword.setError(getString(R.string.error_field_required));
+                    if (mPassword.isEmpty()) {
+                        mPasswordEditText.setError(getString(R.string.error_field_required));
                     }
-                    if (email.isEmpty()) {
-                        mEmail.setError(getString(R.string.error_field_required));
+                    if (mEmail.isEmpty()) {
+                        mEmailEditText.setError(getString(R.string.error_field_required));
                     }
-                    if (firstName.isEmpty()) {
-                        mFirstName.setError(getString(R.string.error_field_required));
+                    if (mFirstName.isEmpty()) {
+                        mFirstNameEditText.setError(getString(R.string.error_field_required));
                     }
-                    if (lastName.isEmpty()) {
-                        mLastName.setError(getString(R.string.error_field_required));
+                    if (mLastName.isEmpty()) {
+                        mLastNameEditText.setError(getString(R.string.error_field_required));
                     }
                 } else {
                     if (isOnline()) {
-                        ParseUser newUser = new ParseUser();
-                        newUser.setUsername(username);
-                        newUser.setPassword(password);
-                        newUser.setEmail(email);
-                        final String finalUsername = username;
-                        newUser.signUpInBackground(new SignUpCallback() {
+
+                        mProgressDialog = new ProgressDialog(SignUpActivity.this);
+                        mProgressDialog.setMessage(getString(R.string.creating_account));
+                        mProgressDialog.setCancelable(false);
+                        mProgressDialog.show();
+
+                        ParseQuery<ParseObject> queryCount = new ParseQuery<ParseObject>(ParseConstants.CLASS_USER);
+                        queryCount.countInBackground(new CountCallback() {
                             @Override
-                            public void done(ParseException e) {
+                            public void done(int count, ParseException e) {
                                 if (e == null) {
-                                    SmartyApplication.updateParseInstallation(ParseUser.getCurrentUser());
-                                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    ParseUser newUser = new ParseUser();
+                                    newUser.setUsername(mUsername);
+                                    newUser.setPassword(mPassword);
+                                    newUser.setEmail(mEmail);
+                                    newUser.put(ParseConstants.KEY_FIRST_NAME, mFirstName);
+                                    newUser.put(ParseConstants.KEY_LAST_NAME, mLastName);
+                                    newUser.put(ParseConstants.KEY_NUMBER_ID, count+1);
 
+                                    newUser.signUpInBackground(new SignUpCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            mProgressDialog.dismiss();
+                                            if (e == null) {
+                                                SmartyApplication.updateParseInstallation(ParseUser.getCurrentUser());
+                                                Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                                Toast.makeText(SignUpActivity.this,getString(R.string.signup_success_message),Toast.LENGTH_LONG).show();
+                                            } else {
+                                                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                                                builder.setMessage(e.getMessage())
+                                                        .setTitle(R.string.signup_error_title)
+                                                        .setPositiveButton(android.R.string.ok, null);
+                                                AlertDialog dialog = builder.create();
+                                                dialog.show();
+                                            }
+
+                                        }
+                                    });
                                 } else {
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
-                                    builder.setMessage(e.toString())
-                                            .setTitle(R.string.signup_error_title)
-                                            .setPositiveButton(android.R.string.ok, null);
-                                    AlertDialog dialog = builder.create();
-                                    dialog.show();
-                                }
 
+                                }
                             }
                         });
-
-
-                        /**/
 
 
                     } else {

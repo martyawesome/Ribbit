@@ -5,55 +5,49 @@
     android:paddingLeft="@dimen/activity_profile_horizontal_margin"
     android:paddingRight="@dimen/activity_profile_horizontal_margin"
     android:paddingBottom="@dimen/activity_profile_vertical_margin"
-    android:paddingTop="@dimen/profile_value_vertical"
+    android:layout_marginTop="180dp"
     tools:context="com.martyawesome.smarty.app.ui.ProfileActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="6"
+        android:paddingTop="@dimen/profile_value_vertical"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:weightSum="9"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"/>
+            android:gravity="center_horizontal">
 
             <ImageButton
                 android:id="@+id/imageButton"
-                android:layout_weight="5"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
                 android:src="@drawable/avatar_empty"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitCenter" />
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_weight="4">
+            android:layout_weight="4"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="40dp">
 
             <LinearLayout
                 android:id="@+id/editTextLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/lightest_grey"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_profile_vertical_margin"
+                android:paddingTop="@dimen/profile_value_vertical">
 
                 <EditText
                     style="@style/AuthEditText"
@@ -83,7 +77,6 @@
                     android:layout_marginLeft="@dimen/user_grid_spacing"
                     android:layout_marginRight="@dimen/user_grid_spacing"
                     android:layout_marginTop="@dimen/user_grid_spacing"
-                    android:layout_marginBottom="15dp"
                     android:id="@+id/email"
                     android:inputType="textEmailAddress"
                     android:hint="@string/email_hint" />
@@ -94,6 +87,7 @@
                 android:text="@string/edit_profile"
                 style="@style/AuthButton"
                 android:layout_margin="0dp"
+                android:layout_gravity="center_horizontal"
                 android:textSize="20dp"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
@@ -102,4 +96,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </RelativeLayout>
